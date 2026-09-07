@@ -42,15 +42,22 @@ EDITH is a Windows-native personal AI assistant designed to make interacting wit
 
 ## See it in action
 
+> [!IMPORTANT]
+> **The screenshots below are workflow demonstrations, not EDITH's current user interface.** They show representative document and web-context results from earlier development builds. EDITH now uses a separate transparent, native golden 3D HUD. Its complete current appearance and interaction design are intentionally kept private while the product is under active development.
+
+![EDITH private golden 3D HUD teaser](assets/edith-private-hud.svg)
+
+Recruiters and technical reviewers can request a private demonstration or source-code review by contacting **[skilaru@arizona.edu](mailto:skilaru@arizona.edu?subject=EDITH%20private%20demonstration)**.
+
 ### Local PDF understanding
 
-EDITH captured a 20-page foreground PDF and produced a document-specific explanation while reporting its extraction limits.
+This representative development capture shows EDITH processing a 20-page foreground PDF and producing a document-specific explanation while reporting extraction limits. **It does not show the current golden 3D HUD.**
 
 ![EDITH explaining a local PDF](assets/edith-local-pdf.png)
 
 ### Active web context
 
-EDITH used captured browser text as evidence, routed deeper analysis to Codex Terra, and disclosed that the captured article was incomplete.
+This representative development capture shows EDITH using browser text as evidence, routing deeper analysis to Codex Terra, and disclosing that the captured article was incomplete. **It does not show the current golden 3D HUD.**
 
 ![EDITH researching an active web page](assets/edith-web-context.png)
 
