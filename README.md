@@ -4,7 +4,7 @@
 
 # E D I T H
 
-### A local-first Windows assistant that understands the work in front of you
+### A private, offline AI that sees your whole desktop and works by voice
 
 <p>
   <a href="https://github.com/hemu77/edith-windows-assistant"><strong>Private implementation repository</strong></a>
@@ -14,42 +14,52 @@
 
 <img src="https://img.shields.io/badge/Windows-native-0078D4?style=flat-square&logo=windows11&logoColor=white" alt="Windows native">
 <img src="https://img.shields.io/badge/Local--first-private-16a085?style=flat-square" alt="Local first and private">
-<img src="https://img.shields.io/badge/Voice-and%20typed-111827?style=flat-square" alt="Voice and typed">
+<img src="https://img.shields.io/badge/Offline-no%20internet-111827?style=flat-square" alt="Offline">
+<img src="https://img.shields.io/badge/Hands--free-accessible-8e44ad?style=flat-square" alt="Hands-free and accessible">
 
 </div>
 
 ## The vision
 
-EDITH is a personal AI assistant that lives on the Windows desktop and understands what its owner is working on. Instead of copying text into a chatbot, the owner simply asks: "what is this page about?", "which year has the highest value in this file?", "what is the difference between these two?". EDITH looks at the window, document, or data in front of the owner, answers from that source, and says which source it used.
+A computer should understand what you are working on, help you think about it, and do it all without your data ever leaving the machine.
 
-The goal is a desktop companion that is private by default, honest about what it saw, and careful about what it does. Everyday questions and document reading stay on the device. Larger research and engineering work can be handed to a more capable model through a protected gateway. Nothing on the computer changes without the owner's clear confirmation.
+EDITH is being built toward that: a personal AI that lives on the Windows desktop, sees every window and tab its owner has open, reads documents of any length, reasons about them across sources, and acts on the computer by voice with the owner always in control. It runs entirely on the owner's own hardware, with no internet connection required, and is designed so that people who cannot easily use a keyboard, mouse, or their legs can operate a whole computer by speaking to it.
 
 ## The HUD
 
 ![EDITH golden 3D HUD with layered message panes](assets/edith-hud.png)
 
-EDITH appears as a transparent golden reactor floating on the desktop. Answers arrive as layered holographic panes connected to the ring by light filaments: the newest answer in focus above the ring, earlier ones resting on a curved wall to either side. Panes can be pinned, folded, dismissed, or brought into focus with a click, and the owner can speak or type at any time.
+EDITH appears as a transparent golden reactor floating on the desktop. Answers arrive as layered holographic panes connected to the ring by light filaments: the newest in focus above the ring, earlier ones on a curved wall to either side, each one pinnable, foldable, and dismissible by click or by voice.
 
-## What EDITH is designed to do
+## What EDITH is aiming for
 
-### Understand what is on screen
+### Read anything, at any length
 
-- Read the spreadsheet, document, PDF, or web page in front of the owner and answer questions about it.
-- Compare two windows side by side: ask about each one, then ask what separates them.
-- Keep the thread of a conversation, so "give an example of that" or "and this one?" means what the owner expects.
-- Name the source behind every answer, and say plainly when something is not in the source instead of filling the gap.
+Whole books, 400-page reports, dense research papers, scanned contracts, and spreadsheets with thousands of rows, read end to end rather than skimmed. EDITH is designed to keep track of exactly how much of a document it has covered, cite the page or row behind every claim, pull numbers out of tables exactly instead of guessing at them, and answer questions that span several documents at once.
 
-### Act carefully
+### Understand the whole desktop, not one window
 
-- Control windows, sound, media, and navigation through a fixed list of allowed actions.
-- Ask for a spoken confirmation that names the exact target before acting, and stop the moment the owner says no.
-- Notice when the owner has switched to a different application and ask which one they mean, rather than silently reading it.
+What is on screen, across every open application and every browser tab. Ask "what is this?", then "and that one?", then "what is the difference between these two?", or "which of my open tabs actually answers my question?". EDITH follows the owner's attention from window to window, keeps the sources straight, and always says which one an answer came from.
 
-### Stay private and in the owner's control
+### Fully offline
 
-- Activate with `Win+Shift+E`, with separate Personal and Research modes.
-- Stop instantly on "EDITH, stop", and forget temporary research context when a session ends.
-- Recognise its owner's voice, keep processing local wherever possible, and treat everything it reads as data, never as instructions.
+No cloud, no API keys, no connection required. Speech recognition, reasoning, document analysis, and speech synthesis all run on the local machine, so EDITH works on a plane, in a lab, or on a network that is not allowed to send data out.
+
+### A model of its own
+
+Rather than borrowing a general chatbot, EDITH is being distilled into its own compact model: trained from the behaviour of much larger models on exactly the work EDITH does, such as grounding answers in a source, reading long documents in passes, refusing to invent, and choosing the right tool. The goal is large-model judgement at a size that runs in real time on a laptop GPU.
+
+### Hands-free computing for everyone
+
+For people with limited use of their hands or legs, a computer should not require a mouse. EDITH is designed to let its owner navigate, read, write, compare, and operate applications entirely by voice, with clear spoken confirmation before anything changes and an instant "EDITH, stop" that always works.
+
+### Secure reasoning by design
+
+An assistant that reads web pages and documents will eventually read something written to manipulate it. EDITH's direction follows the CaMeL line of research: a privileged planner that decides what to do, a quarantined reader that handles untrusted content and cannot act, and data flow tracking so that nothing read from a page can trigger an action on its own. Every action leaves a receipt, and EDITH is not allowed to claim it did something that never ran.
+
+### Private by default
+
+The owner's voice, documents, and screen stay on the owner's machine. Temporary research context is forgotten when a session ends, personal memory is kept only with consent, and EDITH answers to its owner's voice.
 
 ## How it fits together
 
@@ -60,24 +70,24 @@ Voice / typed request / Win+Shift+E
 Windows host and session runtime
                  |
                  v
-Understand the request and the source in front of the owner
+Understand the request and every source the owner is looking at
        |                 |                 |
        v                 v                 v
-Windows actions     Local model        Larger model for
-and facts           on the device      research and engineering
+Planner             Quarantined        Governed actions
+(trusted intent)    reader             with confirmation
+                    (untrusted text)   and receipts
        |                 |                 |
        +-----------------+-----------------+
                          |
                          v
-Golden HUD: answers with their source, progress, and confirmations
+On-device model, offline, answering with its sources in the golden HUD
 ```
 
 ## Built with
 
 - Python and native Windows APIs
-- A local language model and offline speech recognition
+- On-device language and speech models
 - OpenGL for the 3D HUD
-- React and TypeScript for diagnostics tooling
 
 ## Current progress and source code
 
