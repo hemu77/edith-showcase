@@ -1,108 +1,101 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/EDITH-WINDOWS%20AI%20ASSISTANT-07111f?style=for-the-badge&labelColor=07111f&color=d8a84e" alt="EDITH Windows AI Assistant">
+<img src="https://img.shields.io/badge/EDITH-LOCAL%20DESKTOP%20ASSISTANT-07111f?style=for-the-badge&labelColor=07111f&color=d8a84e" alt="EDITH local desktop assistant">
 
 # E D I T H
 
-### A private, offline AI that sees your whole desktop and works by voice
+### Your work stays on your desktop. Your assistant should know which work you mean.
 
-<p>
-  <a href="https://github.com/hemu77/edith-windows-assistant"><strong>Private implementation repository</strong></a>
-  &nbsp;&middot;&nbsp;
-  <a href="mailto:skilaru@arizona.edu?subject=EDITH%20private%20repository%20access"><strong>Request access</strong></a>
-</p>
+[Request a demonstration](mailto:skilaru@arizona.edu?subject=EDITH%20demonstration) · [Private implementation](https://github.com/hemu77/edith-windows-assistant)
 
-<img src="https://img.shields.io/badge/Windows-native-0078D4?style=flat-square&logo=windows11&logoColor=white" alt="Windows native">
-<img src="https://img.shields.io/badge/Local--first-private-16a085?style=flat-square" alt="Local first and private">
-<img src="https://img.shields.io/badge/Offline-no%20internet-111827?style=flat-square" alt="Offline">
-<img src="https://img.shields.io/badge/Hands--free-accessible-8e44ad?style=flat-square" alt="Hands-free and accessible">
+Windows-native interaction · Local-first inference · Source-aware answers · Governed tools
 
 </div>
 
-## The vision
+## The idea
 
-A computer should understand what you are working on, help you think about it, and do it all without your data ever leaving the machine.
+EDITH explores a practical question: can a small local model become a useful desktop assistant when its surrounding software supplies the right evidence, clear permissions and reliable tools?
 
-EDITH is being built toward that: a personal AI that lives on the Windows desktop, sees every window and tab its owner has open, reads documents of any length, reasons about them across sources, and acts on the computer by voice with the owner always in control. It runs entirely on the owner's own hardware, with no internet connection required, and is designed so that people who cannot easily use a keyboard, mouse, or their legs can operate a whole computer by speaking to it.
+Rather than treating the desktop as one giant prompt, EDITH tracks the owner's selected source, distinguishes captured facts from missing information, and separates answering from acting. Voice and typed requests share a runtime. A transparent golden HUD keeps answers near the work.
 
-## The HUD
+The goal is accessible, private assistance with reading, comparing, remembering and bounded desktop tasks. It is a working prototype—not AGI, a universal computer operator, or a guarantee of error-free answers.
 
-![EDITH golden 3D HUD with layered message panes](assets/edith-hud.png)
+## The golden HUD
 
-EDITH appears as a transparent golden reactor floating on the desktop. Answers arrive as layered holographic panes connected to the ring by light filaments: the newest in focus above the ring, earlier ones on a curved wall to either side, each one pinnable, foldable, and dismissible by click or by voice.
+![EDITH golden reactor and layered conversation panes](assets/edith-hud.png)
 
-## What EDITH is aiming for
+Existing project visual of the native golden reactor and layered-answer design. This is not a new recording of the October 23 tests, proof of speech accuracy, or a promise that every displayed interaction works on every device. The private repository contains implementation details and the verification record.
 
-### Read anything, at any length
+## Why this project is interesting
 
-Whole books, 400-page reports, dense research papers, scanned contracts, and spreadsheets with thousands of rows, read end to end rather than skimmed. EDITH is designed to keep track of exactly how much of a document it has covered, cite the page or row behind every claim, pull numbers out of tables exactly instead of guessing at them, and answer questions that span several documents at once.
+| Design choice | Why it matters |
+|---|---|
+| A source desk, not a pile of screenshots | Captures retain source identity and versions. Ambiguous or sensitive sources need deliberate handling. |
+| Local reasoning with typed host controls | A plausible model instruction is not execution permission. Tools have contracts, approvals and recorded results. |
+| Evidence-aware completion | A displayed answer, accepted request and completed action are different states. Tests check terminal evidence, not reassuring words. |
+| Personal and Research boundaries | Explicitly saved facts and temporary source history have different lifetimes. Missing memory must not become invented recollection. |
+| Native layered interaction | The golden OpenGL reactor and message panes coexist with ordinary Windows applications; typed input complements voice. |
 
-### Understand the whole desktop, not one window
+These are integrated engineering priorities, not claims that no other project has similar features.
 
-What is on screen, across every open application and every browser tab. Ask "what is this?", then "and that one?", then "what is the difference between these two?", or "which of my open tabs actually answers my question?". EDITH follows the owner's attention from window to window, keeps the sources straight, and always says which one an answer came from.
+## Current implementation scope
 
-### Fully offline
+- Hotkey activation, native HUD, typed interaction and a local voice pipeline.
+- Windows readings and registered controls, with consequential actions gated.
+- Text, Word, PDF and CSV analysis; bounded browser/window capture when accessible.
+- Source labels, extraction coverage, pinned-source comparison and temporary session recall.
+- A governed MCP host with bounded transport, tool-definition checks, one-use approval decisions and action receipts.
+- Explicit local Personal memory with searchable owner statements and exact-ID deletion. No automatic learning of private documents into model weights.
+- Original local Qwen inference retained. Codex routing is disabled in the shared local-only installation.
 
-No cloud, no API keys, no connection required. Speech recognition, reasoning, document analysis, and speech synthesis all run on the local machine, so EDITH works on a plane, in a lab, or on a network that is not allowed to send data out.
+Offline use requires installing model and speech assets first. Optional network tools have their own disclosure boundaries. EDITH does not read every tab, understand every application, or certify a whole book's factual summary.
 
-### A model of its own
+## Recent engineering work
 
-Rather than borrowing a general chatbot, EDITH is being distilled into its own compact model: trained from the behaviour of much larger models on exactly the work EDITH does, such as grounding answers in a source, reading long documents in passes, refusing to invent, and choosing the right tool. The goal is large-model judgement at a size that runs in real time on a laptop GPU.
+The October 23 recovery addresses bugs that can masquerade as weak model intelligence: explicit file questions that never capture the file; cleared Research sessions falling back to invented recall; HUD completion before the next turn can be accepted; and approvals becoming stale while tools wait.
 
-### Hands-free computing for everyone
+The private handoff separates reproduced failures, regression tests, live typed checks and pending physical tests. Synthetic fixtures and real local documents are used without publishing private desktop logs. Numerical benchmark and readiness claims belong to the pinned evidence record—not this showcase.
 
-For people with limited use of their hands or legs, a computer should not require a mouse. EDITH is designed to let its owner navigate, read, write, compare, and operate applications entirely by voice, with clear spoken confirmation before anything changes and an instant "EDITH, stop" that always works.
+## Technology
 
-### Secure reasoning by design
+| Layer | Stack and role |
+|---|---|
+| Desktop runtime | Python, Win32/ctypes, Windows UI Automation and local IPC |
+| Native presentation | OpenGL/moderngl, software fallback, transparent layered windows and interactive panes |
+| Control center | React, TypeScript and Vite; separate from the native golden HUD |
+| Local inference | Quantized GGUF through llama.cpp; original Qwen3-4B deployment retained |
+| Speech | Local capture/VAD, Faster Whisper recognition, owner verification and Windows speech playback |
+| Documents | Local parsers, structured table calculations and bounded source extraction |
+| Memory and audit | SQLite, source/version metadata, approved-fact retrieval and action receipts |
+| Tools | MCP/JSON-RPC, pinned definitions, scoped approvals and bounded process lifetime |
+| Verification | Pytest, Ruff, frontend tests/build and live listener-IPC scenarios |
 
-An assistant that reads web pages and documents will eventually read something written to manipulate it. EDITH's direction follows the CaMeL line of research: a privileged planner that decides what to do, a quarantined reader that handles untrusted content and cannot act, and data flow tracking so that nothing read from a page can trigger an action on its own. Every action leaves a receipt, and EDITH is not allowed to claim it did something that never ran.
+Windows is the primary desktop target. macOS installation/gateway work does not establish equivalent native HUD, microphone or application-control support. Fresh-machine rendering and hardware compatibility still need installation testing. Report failures with OS, device, steps, expected result and a redacted error log.
 
-### Private by default
+## Research direction
 
-The owner's voice, documents, and screen stay on the owner's machine. Temporary research context is forgotten when a session ends, personal memory is kept only with consent, and EDITH answers to its owner's voice.
+The proposed study compares small local models through a fixed, corrected host before adaptation. It separates text/UI Automation tool use, visual grounding and speech accuracy. GPU work is proposed for bounded adapter experiments—not already completed or proven beneficial.
 
-## How it fits together
+Memory research compares lightweight retrieval with graph/vector systems such as Cognee. Relevance, provenance, deletion, latency and memory use must justify added components. Researching a model or memory platform does not mean it is deployed.
 
-```text
-Voice / typed request / Win+Shift+E
-                 |
-                 v
-Windows host and session runtime
-                 |
-                 v
-Understand the request and every source the owner is looking at
-       |                 |                 |
-       v                 v                 v
-Planner             Quarantined        Governed actions
-(trusted intent)    reader             with confirmation
-                    (untrusted text)   and receipts
-       |                 |                 |
-       +-----------------+-----------------+
-                         |
-                         v
-On-device model, offline, answering with its sources in the golden HUD
-```
+## For collaborators and recruiters
 
-## Built with
-
-- Python and native Windows APIs
-- On-device language and speech models
-- OpenGL for the 3D HUD
-
-## Current progress and source code
-
-This page describes where EDITH is headed. Current progress, demonstrations, and the full implementation live in a private repository.
+The implementation is private. A public link alone does not grant access. Contact the owner for a demonstration or suitable repository access; private source, recordings, credentials and model files are not included here.
 
 <div align="center">
 
-### To see EDITH's current progress, request access to the private repository
+### CONTACT **skilaru@arizona.edu** TO VIEW THE IMPLEMENTATION
 
-<a href="mailto:skilaru@arizona.edu?subject=EDITH%20private%20repository%20access"><img src="https://img.shields.io/badge/REQUEST%20PRIVATE%20REPOSITORY%20ACCESS-C62828?style=for-the-badge&logo=gmail&logoColor=white" alt="Request private repository access"></a>
-
-Contact **skilaru@arizona.edu** for repository access or a live demonstration.
+[![Request private repository access](https://img.shields.io/badge/REQUEST%20REPOSITORY%20ACCESS-C62828?style=for-the-badge&logo=gmail&logoColor=white)](mailto:skilaru@arizona.edu?subject=EDITH%20private%20repository%20access)
 
 </div>
 
-## Relationship to OpenJarvis
+## Attribution
 
-EDITH began as a fork of and reference to the Apache-2.0 OpenJarvis project. OpenJarvis remains the attributed upstream foundation, but EDITH is not presented as the official OpenJarvis product. EDITH has been developed toward a different goal: a private, context-aware desktop assistant that lives within its owner's operating environment. Applicable upstream license and attribution notices are preserved.
+EDITH began as a fork of and reference to Apache-2.0 OpenJarvis. Its desktop-focused runtime, interaction and governance goals developed separately. It is not the official OpenJarvis product; applicable upstream license and attribution notices remain preserved.
+
+---
+
+![Work in progress](https://img.shields.io/badge/WORK%20IN%20PROGRESS-NOT%20PRODUCTION%20CERTIFIED-C62828?style=for-the-badge)
+
+Physical voice, fresh-device rendering, long-duration reliability and arbitrary application behavior require further validation. Model answers can still be wrong; approvals and source evidence reduce risk, not eliminate it.
