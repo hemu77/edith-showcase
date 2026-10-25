@@ -46,11 +46,25 @@ These are integrated engineering priorities, not claims that no other project ha
 - Source labels, extraction coverage, pinned-source comparison and temporary session recall.
 - A governed MCP host with bounded transport, tool-definition checks, one-use approval decisions and action receipts.
 - Explicit local Personal memory with searchable owner statements and exact-ID deletion. No automatic learning of private documents into model weights.
+- Owner-managed task lists, pinned-source task references and local handoff notes. Marking a task done is not autonomous execution; recorded tool effects remain separate.
+- Bounded scanned-PDF OCR and conservative image-supported spacing repair. Unreadable pages and uncertain text remain explicitly partial.
 - Original local Qwen inference retained. Codex routing is disabled in the shared local-only installation.
 
 Offline use requires installing model and speech assets first. Optional network tools have their own disclosure boundaries. EDITH does not read every tab, understand every application, or certify a whole book's factual summary.
 
 ## Recent engineering work
+
+October 25 adds practical coordination around reading: turn a source discussion
+into explicit tasks, revisit them in Personal mode, and export a local handoff
+without sending anything. Named environment-variable diagnostics show only
+configured/empty/missing—not credential values or remote validity.
+
+Evaluation included 22 format-stratified local files, public-paper OCR experiments
+and real local-model summary runs. Review uncovered and repaired provenance,
+session-isolation and recognition-entry-point bugs. Aggressive OCR spacing and
+full-context packing candidates were rejected when they worsened results. Large
+first summaries can still take minutes; OCR and generated facts still require
+source checking. Private documents and transcripts are not published here.
 
 The October 23 recovery addresses bugs that can masquerade as weak model intelligence: explicit file questions that never capture the file; cleared Research sessions falling back to invented recall; HUD completion before the next turn can be accepted; and approvals becoming stale while tools wait.
 
