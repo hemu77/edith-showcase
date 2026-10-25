@@ -59,6 +59,8 @@ into explicit tasks, revisit them in Personal mode, and export a local handoff
 without sending anything. Named environment-variable diagnostics show only
 configured/empty/missing—not credential values or remote validity.
 
+These are development changes in [private PR #1](https://github.com/hemu77/edith-windows-assistant/pull/1), not a claim of a merged or production-certified release.
+
 Evaluation included 22 format-stratified local files, public-paper OCR experiments
 and real local-model summary runs. Review uncovered and repaired provenance,
 session-isolation and recognition-entry-point bugs. Aggressive OCR spacing and
